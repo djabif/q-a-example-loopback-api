@@ -31,5 +31,13 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "question": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "answer": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }
