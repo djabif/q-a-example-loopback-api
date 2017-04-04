@@ -10,7 +10,11 @@
       "type": "string",
       "required": true
     },
-    "vote": {
+    "negativeVotes": {
+      "type": "number",
+      "default": 0
+    },
+    "positiveVotes": {
       "type": "number",
       "default": 0
     }

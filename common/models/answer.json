@@ -9,10 +9,24 @@
     "answer": {
       "type": "string",
       "required": true
+    },
+    "negativeVotes": {
+      "type": "number",
+      "default": 0
+    },
+    "positiveVotes": {
+      "type": "number",
+      "default": 0
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "question": {
+      "type": "belongsTo",
+      "model": "question",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }
