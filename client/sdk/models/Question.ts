@@ -3,13 +3,15 @@
 declare var Object: any;
 export interface QuestionInterface {
   "question": any;
-  "vote"?: any;
+  "negativeVotes"?: any;
+  "positiveVotes"?: any;
   "id"?: any;
 }
 
 export class Question implements QuestionInterface {
   "question": any;
-  "vote": any;
+  "negativeVotes": any;
+  "positiveVotes": any;
   "id": any;
   constructor(data?: QuestionInterface) {
     Object.assign(this, data);
@@ -46,8 +48,13 @@ export class Question implements QuestionInterface {
           name: 'question',
           type: 'any'
         },
-        "vote": {
-          name: 'vote',
+        "negativeVotes": {
+          name: 'negativeVotes',
+          type: 'any',
+          default: 0
+        },
+        "positiveVotes": {
+          name: 'positiveVotes',
           type: 'any',
           default: 0
         },

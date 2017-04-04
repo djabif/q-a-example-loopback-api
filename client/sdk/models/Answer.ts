@@ -1,14 +1,25 @@
 /* tslint:disable */
+import {
+  Question
+} from '../index';
 
 declare var Object: any;
 export interface AnswerInterface {
   "answer": any;
+  "negativeVotes"?: any;
+  "positiveVotes"?: any;
   "id"?: any;
+  "questionId"?: any;
+  question?: Question;
 }
 
 export class Answer implements AnswerInterface {
   "answer": any;
+  "negativeVotes": any;
+  "positiveVotes": any;
   "id": any;
+  "questionId": any;
+  question: Question;
   constructor(data?: AnswerInterface) {
     Object.assign(this, data);
   }
@@ -44,12 +55,31 @@ export class Answer implements AnswerInterface {
           name: 'answer',
           type: 'any'
         },
+        "negativeVotes": {
+          name: 'negativeVotes',
+          type: 'any',
+          default: 0
+        },
+        "positiveVotes": {
+          name: 'positiveVotes',
+          type: 'any',
+          default: 0
+        },
         "id": {
           name: 'id',
           type: 'any'
         },
+        "questionId": {
+          name: 'questionId',
+          type: 'any'
+        },
       },
       relations: {
+        question: {
+          name: 'question',
+          type: 'Question',
+          model: 'Question'
+        },
       }
     }
   }
