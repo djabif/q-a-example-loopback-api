@@ -6,6 +6,10 @@
     "validateUpsert": true
   },
   "properties": {
+    "questionSlug":{
+      "type": "string",
+      "required": true
+    },
     "question": {
       "type": "string",
       "required": true
