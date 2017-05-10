@@ -24,7 +24,7 @@
     "question": {
       "type": "belongsTo",
       "model": "question",
-      "foreignKey": ""
+      "foreignKey": "questionId"
     }
   },
   "acls": [],
