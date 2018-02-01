@@ -5,19 +5,21 @@ import {
 
 declare var Object: any;
 export interface QuestionInterface {
-  "questionSlug": any;
-  "question": any;
-  "negativeVotes"?: any;
-  "positiveVotes"?: any;
+  "categorySlug"?: string;
+  "questionSlug": string;
+  "question": string;
+  "negativeVotes"?: number;
+  "positiveVotes"?: number;
   "id"?: any;
   answers?: Answer[];
 }
 
 export class Question implements QuestionInterface {
-  "questionSlug": any;
-  "question": any;
-  "negativeVotes": any;
-  "positiveVotes": any;
+  "categorySlug": string;
+  "questionSlug": string;
+  "question": string;
+  "negativeVotes": number;
+  "positiveVotes": number;
   "id": any;
   answers: Answer[];
   constructor(data?: QuestionInterface) {
@@ -50,23 +52,29 @@ export class Question implements QuestionInterface {
     return {
       name: 'Question',
       plural: 'Questions',
+      path: 'Questions',
+      idName: 'id',
       properties: {
+        "categorySlug": {
+          name: 'categorySlug',
+          type: 'string'
+        },
         "questionSlug": {
           name: 'questionSlug',
-          type: 'any'
+          type: 'string'
         },
         "question": {
           name: 'question',
-          type: 'any'
+          type: 'string'
         },
         "negativeVotes": {
           name: 'negativeVotes',
-          type: 'any',
+          type: 'number',
           default: 0
         },
         "positiveVotes": {
           name: 'positiveVotes',
-          type: 'any',
+          type: 'number',
           default: 0
         },
         "id": {
@@ -78,7 +86,10 @@ export class Question implements QuestionInterface {
         answers: {
           name: 'answers',
           type: 'Answer[]',
-          model: 'Answer'
+          model: 'Answer',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'questionId'
         },
       }
     }

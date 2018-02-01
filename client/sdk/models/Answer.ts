@@ -5,18 +5,18 @@ import {
 
 declare var Object: any;
 export interface AnswerInterface {
-  "answer": any;
-  "negativeVotes"?: any;
-  "positiveVotes"?: any;
+  "answer": string;
+  "negativeVotes"?: number;
+  "positiveVotes"?: number;
   "id"?: any;
   "questionId"?: any;
   question?: Question;
 }
 
 export class Answer implements AnswerInterface {
-  "answer": any;
-  "negativeVotes": any;
-  "positiveVotes": any;
+  "answer": string;
+  "negativeVotes": number;
+  "positiveVotes": number;
   "id": any;
   "questionId": any;
   question: Question;
@@ -50,19 +50,21 @@ export class Answer implements AnswerInterface {
     return {
       name: 'Answer',
       plural: 'Answers',
+      path: 'Answers',
+      idName: 'id',
       properties: {
         "answer": {
           name: 'answer',
-          type: 'any'
+          type: 'string'
         },
         "negativeVotes": {
           name: 'negativeVotes',
-          type: 'any',
+          type: 'number',
           default: 0
         },
         "positiveVotes": {
           name: 'positiveVotes',
-          type: 'any',
+          type: 'number',
           default: 0
         },
         "id": {
@@ -78,7 +80,10 @@ export class Answer implements AnswerInterface {
         question: {
           name: 'question',
           type: 'Question',
-          model: 'Question'
+          model: 'Question',
+          relationType: 'belongsTo',
+                  keyFrom: 'questionId',
+          keyTo: 'id'
         },
       }
     }

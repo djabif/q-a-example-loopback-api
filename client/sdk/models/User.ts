@@ -2,24 +2,22 @@
 
 declare var Object: any;
 export interface UserInterface {
-  "realm"?: any;
-  "username"?: any;
-  "password": any;
-  "email": any;
-  "emailVerified"?: any;
-  "verificationToken"?: any;
-  "id"?: any;
+  "realm"?: string;
+  "username"?: string;
+  "email": string;
+  "emailVerified"?: boolean;
+  "id"?: number;
+  "password"?: string;
   accessTokens?: any[];
 }
 
 export class User implements UserInterface {
-  "realm": any;
-  "username": any;
-  "password": any;
-  "email": any;
-  "emailVerified": any;
-  "verificationToken": any;
-  "id": any;
+  "realm": string;
+  "username": string;
+  "email": string;
+  "emailVerified": boolean;
+  "id": number;
+  "password": string;
   accessTokens: any[];
   constructor(data?: UserInterface) {
     Object.assign(this, data);
@@ -51,41 +49,42 @@ export class User implements UserInterface {
     return {
       name: 'User',
       plural: 'Users',
+      path: 'Users',
+      idName: 'id',
       properties: {
         "realm": {
           name: 'realm',
-          type: 'any'
+          type: 'string'
         },
         "username": {
           name: 'username',
-          type: 'any'
-        },
-        "password": {
-          name: 'password',
-          type: 'any'
+          type: 'string'
         },
         "email": {
           name: 'email',
-          type: 'any'
+          type: 'string'
         },
         "emailVerified": {
           name: 'emailVerified',
-          type: 'any'
-        },
-        "verificationToken": {
-          name: 'verificationToken',
-          type: 'any'
+          type: 'boolean'
         },
         "id": {
           name: 'id',
-          type: 'any'
+          type: 'number'
+        },
+        "password": {
+          name: 'password',
+          type: 'string'
         },
       },
       relations: {
         accessTokens: {
           name: 'accessTokens',
           type: 'any[]',
-          model: ''
+          model: '',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'userId'
         },
       }
     }
